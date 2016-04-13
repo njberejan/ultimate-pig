@@ -25,6 +25,8 @@
 
 import math
 import random
+from Random_Player import RandomPlayer
+from Gambler_Player import GamblerPlayer
 # import statistics as st
 # import numpy as np
 # import matplotlib.pyplot as plt
@@ -33,43 +35,49 @@ class Player:
 
     def __init__(self, personality):
         self.personality = personality #my idea being that the personality aspect determines how they play game below
+        self.game_score = 0
+        self.turn = 0
 
     def roll_a_die(self):
         return random.randint(1, 6)
 
     def roll_again(self):
-        if self.personality == 'basic': #see note on __init__
-            return False
-        elif self.personality == 'gambler':
-            return True
-        else:
-            return random.choice([True, False])
+        return False
+
+# DID NUMBER OF TURNS WRONG. EACH SERIES IS ONE "TURN"
 
     # def turn_decision(self):
     #     if self.personality
 
     def turn(self):
         roll_results_list = []
-        roll_number = 1
-        while roll_number < 7:
+        while True:
             roll = self.roll_a_die()
             if roll == 1:
                 roll_results_list = [0]
-                print('You rolled a one, end of turn. You rolled {} times.'.format(roll_number))
+                # print('You rolled a one, end of turn. You rolled {} times.'.format(roll_number))
                 return sum(roll_results_list)
             else:
                 roll_results_list.append(roll)
                 roll_or_hold = self.roll_again()
                 if roll_or_hold == False:
-                    print('You choose not to roll. Your score is {} in {} turns'.format(sum(roll_results_list), roll_number))
+                    # print('You choose not to roll. Your score is {} in {} turns'.format(sum(roll_results_list), roll_number))
                     return sum(roll_results_list)
                 else:
                     roll_number += 1
                     roll_results_list.append(roll)
                     continue
-        print('The game is over. Your score is {} in {} turns.'.format(sum(roll_results_list), roll_number))
+        # print('The game is over. Your score is {} in {} turns.'.format(sum(roll_results_list), roll_number))
+        self.game_score.append(roll_results_list)
         return sum(roll_results_list)
 
+    def game(self):
+        while self.turn < 7:
+            turn()
+
+trial_results = []
 for _ in range(20):
-    player = Player('gambler')
-    player.turn()
+    player = Random('basic')
+    game()
+    trial_results.append(player.turn())
+print(trial_results)

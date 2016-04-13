@@ -1,5 +1,6 @@
 #Random_Player has a 50% chance of quitting after every round.
-class Random(Player):
+from Player_Class import Player
+class RandomPlayer(Player):
 
-    def __init__(self, personality):
-        self.personality = personality
+    def roll_again(self):
+        return random.choice([True, False])
