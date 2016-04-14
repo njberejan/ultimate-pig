@@ -80,6 +80,18 @@ class Player:
             self.game_score += roll_results_list
         return self.game_score
 
+class RandomPlayer(Player):
+
+    def roll_again(self):
+        return random.choice([True, False])
+
+class GamblerPlayer(Player):
+
+    def roll_again(self):
+        return True
+
+
+
 trial_results = []
 roll_results_list = []
 for _ in range(20):
