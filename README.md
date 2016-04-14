@@ -1,1 +1,1 @@
-access notebook here: http://localhost:8888/notebooks/Untitled.ipynb?kernel_name=python3
+access notebook here: https://github.com/njberejan/ultimate-pig/
